@@ -3,19 +3,21 @@
 ## Sections
 
 - Intro #
+- |- CV
 - About #
-- Research Interest
-- Research
-- Work Experience
+- Research Interests #
+- Research #
+- Work Experiencec #
 - Education #
-- Skills
-- Honors/Awards
-- Courses taught
-- Mentorig/advising
-- Selected Invited Talks/Panels (IUTCS webUX)
-- CV
-- Connect
+- projects
+- |- Skills
+- Honors/Awards (Accolade) #
+- Courses taught #
+- Mentorig/advising #
+- Extra Curricular
+- |- Selected Invited Talks/Panels (IUTCS webUX)
 - Get to know me better
+- Connect/footer #
 
 ## Setup (react)
 
@@ -34,3 +36,7 @@
 -- `npm i gh-pages`
 
 -- `npm install sass --save-dev`
+
+-- `npm install framer-motion`
+
+-- `npm install @mui/material @emotion/react @emotion/styled`

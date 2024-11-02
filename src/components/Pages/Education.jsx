@@ -1,12 +1,16 @@
 import React from "react";
+import { IoLinkOutline } from "react-icons/io5";
+import SubTitle from "../Snippets/SubTitle";
+import { PiStudentBold } from "react-icons/pi";
 
 export default function Education({ edu }) {
   return (
-    <div className="edu topic-sections">
-      <div className="titlePortion">
-        <h2># EDUCATION</h2>
-        <div className="line"></div>
-      </div>
+    <div className="edu topic-sections" id="education">
+      <SubTitle
+        icon={<PiStudentBold className="Sub-icon" />}
+        title="Education"
+        subhead=""
+      />
       <div className="edu-list">
         {edu.map((inst) => (
           <div className="edu-entry">
@@ -19,7 +23,7 @@ export default function Education({ edu }) {
                   className="clickabkelink"
                   onClick={() => window.open(inst.webLink)}
                 >
-                  {inst.Name}
+                  {inst.Name} <IoLinkOutline />
                 </b>{" "}
                 ({inst.Time})
               </h3>

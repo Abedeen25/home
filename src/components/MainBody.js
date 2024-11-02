@@ -1,29 +1,39 @@
-import React, { useState } from "react"
-import { Toolbar } from './Toolbar'
-import ContentBody from './ContentBody'
+import React, { useEffect, useState } from "react";
+import { Toolbar } from "./Snippets/Toolbar";
+import ContentBody from "./ContentBody";
+import Footer from "./Footer";
 
-function MainBody(){
+function MainBody() {
+  const [darkTheme, setDarkTheme] = useState(true);
 
-    const [darkTheme, setDarkTheme] = useState(true);
+  useEffect(() => {
+    let theme = localStorage.getItem("App-theme");
+    if (theme === "dark") {
+      changeThemeFrom("light");
+    } else {
+      changeThemeFrom("dark");
+    }
+  });
 
-  function changeTheme(theme) {
+  function changeThemeFrom(theme) {
     if (theme === "dark") {
       document.querySelector("body").setAttribute("App-theme", "light");
       setDarkTheme(true);
-      console.log(1)
+      localStorage.setItem("App-theme", "light");
     } else {
       document.querySelector("body").setAttribute("App-theme", "dark");
       setDarkTheme(false);
-      console.log(2)
+      localStorage.setItem("App-theme", "dark");
     }
   }
 
-    return (
-        <div className='mainBody'>
-            <Toolbar darkTheme={darkTheme} changeTheme={changeTheme}/>
-            <ContentBody isDarkTheme={darkTheme}/>
-        </div>
-    )
+  return (
+    <div className="mainBody">
+      <Toolbar darkTheme={darkTheme} changeTheme={changeThemeFrom} />
+      <ContentBody isDarkTheme={darkTheme} />
+      <Footer />
+    </div>
+  );
 }
 
-export default MainBody
+export default MainBody;
