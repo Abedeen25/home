@@ -12,6 +12,7 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { SiBetterstack } from "react-icons/si";
 // import { SiHelpscout } from "react-icons/si";
 import { VscActivateBreakpoints } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 
 export function Toolbar({ darkTheme, changeTheme }) {
   const [visible, setVisible] = useState(false);

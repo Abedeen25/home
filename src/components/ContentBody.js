@@ -13,7 +13,7 @@ import Advising from "./Pages/Advising";
 import ExtraCurri from "./Pages/ExtraCurri";
 import { Writeups } from "./Pages/Writeups";
 
-export default function ContentBody({ isDarkTheme }) {
+export default function ContentBody({ isDarkTheme, showBlog }) {
   return (
     <div className="ContentBody">
       <Header isDarkTheme={isDarkTheme} />
@@ -30,7 +30,7 @@ export default function ContentBody({ isDarkTheme }) {
         Courses={Mydata.TaughtCourses}
       />
       <Advising studentList={Mydata.Advising} />
-      <Writeups />
+      <Writeups showBlog={showBlog} />
     </div>
   );
 }

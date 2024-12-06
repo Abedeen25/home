@@ -5,12 +5,25 @@ import { FaLinkedin, FaOrcid } from "react-icons/fa";
 import { VscGithub } from "react-icons/vsc";
 
 export default function Header({ isDarkTheme }) {
+  function refresh() {
+    window.location.reload(false);
+  }
   return (
     <div className="Header">
       {isDarkTheme ? (
-        <img src={masterLogoDark} alt="logo" />
+        <img
+          className="logo"
+          onClick={() => refresh()}
+          src={masterLogoDark}
+          alt="logo"
+        />
       ) : (
-        <img src={masterLogoLight} alt="logo" />
+        <img
+          className="logo"
+          onClick={() => refresh()}
+          src={masterLogoLight}
+          alt="logo"
+        />
       )}
 
       <div className="seperators" />

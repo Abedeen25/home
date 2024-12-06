@@ -5,7 +5,7 @@ import { Gallery } from "react-grid-gallery";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
-export const Writeups = () => {
+export const Writeups = ({ showBlog }) => {
   const images = [
     {
       src: "https://i.postimg.cc/jdnHgvVh/6.webp",
@@ -207,7 +207,7 @@ export const Writeups = () => {
       <div className="topicList">
         <div className="topic">{/* <h3>Writings</h3> */}</div>
         <div className="topic">
-          <h3>3D Renders & Compositions</h3>
+          <h3 onClick={() => showBlog("hehehe")}>3D Renders & Compositions</h3>
         </div>
       </div>
       <div className="gal-render">

@@ -67,6 +67,11 @@ export default function Research({ researchDetails }) {
                   hLink={true}
                 />
               </div>
+              <div className="topics">
+                {arti.tags.map((tag) => (
+                  <div className="topic">{tag}</div>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -114,6 +119,11 @@ export default function Research({ researchDetails }) {
                   });
                 }}
               />
+              <div className="topics">
+                {topic.tags.map((tag) => (
+                  <div className="topic">{tag}</div>
+                ))}
+              </div>
               <ModalC isOpen={isOpen} setIsOpen={setIsOpen} info={modalInfo} />
             </motion.div>
           ))}

@@ -114,6 +114,13 @@ let Mydata = {
         Link: "https://www.nature.com/articles/s41597-023-02432-4",
         PDF: "https://www.nature.com/articles/s41597-023-02432-4.pdf",
         PubLogo: nature,
+        tags: [
+          "Computer Vision",
+          "Dataset",
+          "Localization",
+          "Segmentation",
+          "Biomedical Engineering",
+        ],
       },
       {
         Title:
@@ -130,6 +137,14 @@ let Mydata = {
         Link: "http://doi.org/10.1002/spe.3381",
         PDF: "https://onlinelibrary.wiley.com/doi/epdf/10.1002/spe.3381",
         PubLogo: wiley,
+        tags: [
+          "NLP",
+          "Personality Analysis",
+          "Software Practices",
+          "Exlainable AI",
+          "Behavior Analysis",
+          "Social Computing",
+        ],
       },
       {
         Title:
@@ -140,6 +155,7 @@ let Mydata = {
         Link: "https://www.scitepress.org/Documents/2024/126188/",
         PDF: "http://www.scitepress.org/Papers/2024/126188/126188.pdf",
         PubLogo: enase,
+        tags: ["Software Development", "Coding Analysis", "Code Quality"],
       },
     ],
     Ongoing: [
@@ -152,6 +168,13 @@ let Mydata = {
           "https://cse.sds.bracu.ac.bd/faculty_profile/333/swakkhar_shatabda",
         abstract:
           "This research tackles the problem of optimizing keyboard design for improved typing speed and ergonomics by employing reinforcement learning techniques. While existing keyboard layouts are often designed arbitrarily without following standardized approaches, this study aims to develop an optimal layout that maximizes typing efficiency and user comfort. Previous works have explored multi-objective function optimization and maintaining similarity with standard layouts using algorithms like Ant Colony Optimization, deep learning with genetic algorithms, and multi-objective optimization problems. However, accurate ergonomic criteria across different keyboard types and objective functions for optimal layout design remain unexplored. By considering the six ergonomic criteria proposed by Eggers et al. (2003) and leveraging reinforcement learning algorithms, we aim to apply reinforcement-based optimization methods to the keyboard design problem, paving the way for a more comprehensive and data-driven approach to optimizing keyboard layouts.",
+        tags: [
+          "Ergonomics",
+          "Accessibility",
+          "Product Design",
+          "Design Optimization",
+          "Reinforcement Learning",
+        ],
       },
       {
         title:
@@ -162,6 +185,7 @@ let Mydata = {
           "https://cse.sds.bracu.ac.bd/faculty_profile/333/swakkhar_shatabda",
         abstract:
           "With the rise of technology and automation, many of our day-to-day activities and systems we rely on have become automated. Though this makes our lives more efficient, these systems are primarily developed for the masses, leaving specific groups and ethnicities behind. The rural farmers in Bangladesh lack the proper education and technological literacy, which can place them at a disadvantage in adjusting to the current trends in the digital marketplace. As they contribute significantly to the nation's economy, it is crucial to address their needs with specific consideration of accessibility, usability, and economic empowerment. We conducted a two-phase study to minimize this gap. The study examined the design and implementation of an enhanced Farmer-to-Consumer (F2C) marketplace. In the first phase, we conducted semi-structured interviews with 47 participants, with small-scale farmers, women, and elderly users. This gave us an understanding of their decision-making processes, digital platform adoption barriers, and market participation challenges. Our study finds a significant gap between existing digital marketplace solutions and farmers' technological capabilities. Farmers also strongly desire direct market access without intermediary dependence.  The second phase involved user testing with 30 participants, followed by in-depth interviews to evaluate and iterate on our proposed system. Our research contributes to the understanding of digital marketplaces and how they can be redesigned to accommodate users with varying levels of technological proficiency. We propose a socio-technical framework that incorporates voice commands in local languages, icon-based interfaces, simplified layouts, and audio guides supplemented by community partnerships and logistical support systems. Our findings expand the discourse on inclusive digital marketplace design, highlighting the importance of aligning technological solutions with existing practices while minimizing barriers. This work offers implications for researchers and practitioners working on digital inclusion initiatives in agricultural communities, suggesting pathways for creating more equitable and accessible digital marketplaces in the Global South.",
+        tags: ["HCI", "Accessible Technology", "CSCW", "UX Design"],
       },
       {
         title:
@@ -171,6 +195,7 @@ let Mydata = {
         SupLink: "https://novia-nurain.github.io/",
         abstract:
           "This study investigates the factors influencing students in Bangladesh to pursue Computer Science (CS) as a field of study and the challenges they face during their first year of university. As CS enrollments continue to rise globally, driven by career opportunities in an increasingly technology-driven world, Bangladesh has seen a significant uptick in CS enrollment, especially in public and private universities. Despite this growth, a notable skills gap exists, with employers citing a shortage of qualified CS professionals and high dropout rates among CS students. This research seeks to understand why students choose CS post-Higher Secondary Certificate (HSC) and examines the academic, personal, and institutional challenges that impact their first-year experience. Drawing on surveys and semi-structured interviews with first-year CS students from diverse socioeconomic and geographical backgrounds, this study explores how factors like family support, career prospects, intrinsic interest, and technological exposure influence students’ decision-making processes. Additionally, the study examines challenges that may hinder their academic performance, particularly the disparity in academic preparation among students from urban versus rural areas and varying socioeconomic backgrounds. Findings from this research could inform policy interventions to improve the quality and retention rates of CS students, addressing both motivation and skill development to bridge the gap between industry demand and graduate readiness in Bangladesh’s IT sector.",
+        tags: ["CSCW", "Teaching and Learning Experience", "HCI"],
       },
     ],
   },
@@ -181,11 +206,12 @@ let Mydata = {
     4: "Fall 2023",
     5: "Spring 2024",
     6: "Summer 2024",
+    7: "Fall 2024",
   },
   TaughtCourses: [
     {
       courseTitle: "CSE 4945: UI: Design and Concepts",
-      semesters: [6, 5],
+      semesters: [7, 6, 5],
     },
     {
       courseTitle: "EEE 4261: Green Computing",
@@ -205,7 +231,7 @@ let Mydata = {
     },
     {
       courseTitle: "CSE 2216: Data Structure and Algorithms I Laboratory",
-      semesters: [5, 4, 3],
+      semesters: [7, 5, 4, 3],
     },
     {
       courseTitle: "CSE 2213: Discrete Mathematics",
@@ -225,7 +251,7 @@ let Mydata = {
     },
     {
       courseTitle: "CSE 1115: Object Oriented Programming",
-      semesters: [6, 2, 1],
+      semesters: [7, 6, 2, 1],
     },
     {
       courseTitle: "CSE 1112: Structured Programming Language Laboratory",

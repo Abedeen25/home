@@ -1,7 +1,6 @@
 import "./App.css";
-import MainBody from "./components/MainBody";
 import { Helmet } from "react-helmet";
-// import useVisitCounter from "./functions/asyncfire";
+import MainBody from "./components/MainBody";
 
 function App() {
   // console.log(useVisitCounter());
