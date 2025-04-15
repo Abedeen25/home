@@ -89,12 +89,10 @@ let Mydata = {
       "My focus is in the area of Reinforcement Learning, Interaction Design, Human computer Interaction and Explainable AI.",
     Interests: [
       "Interaction Design",
-      "Human Computer Interaction",
       "Social Computing",
       "User Experience",
       "Reinforcement Learning",
       "Explainable AI",
-      "Human Factors",
       "Biomedical Engineering",
     ],
     Published: [
@@ -174,6 +172,30 @@ let Mydata = {
           "Product Design",
           "Design Optimization",
           "Reinforcement Learning",
+        ],
+      },
+      {
+        title:
+          '"Can I enjoy my hobbies like before?" Designing a Context-aware To-Do App for Improving Hobby Engagement and Well-being',
+        Status: "Under Review",
+        Spervisor: null,
+        abstract:
+          "Hobbies play a vital role in mental well-being and work-life balance, yet they are often neglected due to poor time management and the planning fallacy. Traditional task management apps rely on rigid schedules, leading to disengagement and deprioritization of hobbies. Furthermore, our study has found that despite the willingness to engage with hobbies, the rise of social media and content platforms further diverts idle time from creative pursuits. To address this gap, we propose Hobbify, an AI-driven task management system that intelligently integrates hobbies into users’ daily routines. Hobbify utilizes a context-aware AI agent to recommend personalized hobbies based on user preferences, past interactions, and real-time contextual factors such as time, weather, and location. It also provides reminders and insights to encourage sustained engagement. By dynamically optimizing hobby participation, Hobbify fosters better mental well-being and healthier work-life balance.",
+        tags: ["Interaction Design", "Well-being", "Mental Health", "LLM"],
+      },
+      {
+        title:
+          '"Can AI help me with healthy eating?" Designing a Personalized LLM-based Food Recommender System',
+        Status: "Under Review",
+        Spervisor: null,
+        abstract:
+          "Consumers rely on food labels (i.e., ingredients and nutritional facts) to make informed dietary choices, yet navigating health constraints remains challenging. Existing food recommendation systems lack personalized, health-aware insights, creating a research gap in leveraging Large Language Models (LLMs) for precise food selection. We propose FoodChooser, an AI-based food recommender system that analyzes packaged food labels and provides customized recommendations based on health factors. Our approach evaluates multiple prompting techniques—role-based, shot-based, instruction-based, and chain-of-thought—to determine optimal LLM performance. The system generates responses in four key components: Decision (Yes/No), Explanation, Reasons, and Consultations, incorporating user profiles, health conditions, and dietary needs. Using Google’s Gemini LLM, we collaborate with dietitians in a post-evaluation phase to assess response accuracy, clarity, and reliability. Findings indicate that while LLMs aid food selection, reducing biases and improving accuracy remain critical for real-world adoption. This study advances AI-driven dietary assistance for individuals with health constraints.",
+        tags: [
+          "Supportive System",
+          "Well-being",
+          "Recommendation System",
+          "Health and Nutrition",
+          "LLM",
         ],
       },
       {
