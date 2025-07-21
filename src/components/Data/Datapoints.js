@@ -88,12 +88,11 @@ let Mydata = {
     subHead:
       "My focus is in the area of Reinforcement Learning, Interaction Design, Human computer Interaction and Explainable AI.",
     Interests: [
-      "Interaction Design",
-      "Social Computing",
+      "Applied Machine Learning",
+      "Biomedical Engineering",
       "User Experience",
       "Reinforcement Learning",
       "Explainable AI",
-      "Biomedical Engineering",
     ],
     Published: [
       {
