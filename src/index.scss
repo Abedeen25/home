@@ -55,7 +55,7 @@ html {
   scroll-behavior: smooth;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+// Plus Jakarta Sans is loaded via <link> in public/index.html (avoids render-blocking @import).
 
 .Font-200 {
   font-optical-sizing: auto;
@@ -198,8 +198,8 @@ h3 {
 
 .mainBody {
   background-color: var(--bg-main);
-  background-image: url("./Assets/Images/BG.png");
-  background-size: 15px;
+  // Dot pattern is now drawn by the DotGrid canvas (cursor-reactive
+  // chromatic aberration) instead of the old tiled BG.png.
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -214,6 +214,12 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  // Resolve child percentage widths against the full page width so
+  // .ContentBody (80%) always matches the footer (80% - frame bleed),
+  // even when the page content is narrow (blog index/post).
+  width: 100%;
+  // Push the footer to the viewport bottom on short pages.
+  flex: 1 0 auto;
 }
 
 /* Toolbar */
@@ -301,8 +307,8 @@ h3 {
   letter-spacing: 0.05cap;
   align-self: center;
   background: var(--bg-glass);
-  backdrop-filter: blur(4.3px);
-  -webkit-backdrop-filter: blur(4.3px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   min-width: 320px;
   max-width: 1400px;
   height: fit-content;
@@ -914,10 +920,6 @@ h3 {
 
 // Modal
 
-.MuiBackdrop-root {
-  background-color: var(--modal-backdrop) !important;
-}
-
 .box {
   background-color: var(--bg-main);
   outline: none;
@@ -948,7 +950,7 @@ h3 {
 .wrapper {
   position: relative;
   background: linear-gradient(to right, var(--fun-color2), var(--fun-color3));
-  min-width: (320px -1em);
+  min-width: calc(320px - 1em);
   max-width: calc(1400px - 1em);
   width: calc(80% - 1em);
   margin: 2em auto 0 auto;
@@ -1130,9 +1132,20 @@ h3 {
 
 body {
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
   line-height: 1.7em;
   background-color: var(--bg-main);
   -webkit-font-smoothing: antialiased;
@@ -1140,6 +1153,453 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* ============================================================
+   Redesign additions: chromatic aberration, 3D hero, blog, modal
+   ============================================================ */
+
+:root {
+  --ca-r: rgba(255, 60, 90, 0.35);
+  --ca-b: rgba(60, 120, 255, 0.35);
+  --ca-shift: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ca-shift: 0px;
+  }
+}
+
+.chroma {
+  text-shadow:
+    calc(var(--ca-shift) * -1) 0 0 var(--ca-r),
+    var(--ca-shift) 0 0 var(--ca-b);
+}
+
+.chroma-hover {
+  transition: text-shadow 200ms ease;
+}
+
+.chroma-hover:hover {
+  text-shadow:
+    calc(var(--ca-shift) * -1.5) 0 0 var(--ca-r),
+    calc(var(--ca-shift) * 1.5) 0 0 var(--ca-b);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-color-100);
+  outline-offset: 2px;
+}
+
+// 3D hero canvas layer (sits behind all content, above .mainBody background)
+.hero3d {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Cursor-reactive dot-grid background (replaces the old tiled BG.png)
+.dotgrid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+}
+
+// Route-level lazy-loading placeholder
+.route-loading {
+  min-height: 100vh;
+}
+
+// Modal (replaces the old MUI modal)
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--modal-backdrop);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  width: 70%;
+  max-width: 1000px;
+  max-height: 80vh;
+}
+
+/* ---- Blog ---- */
+
+.blog-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: left;
+}
+
+.breadcrumb {
+  margin: 2rem 0 1rem 0;
+  color: var(--text-brighter-text);
+  font-size: 0.9em;
+
+  a {
+    color: var(--text-bright-text);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--accent-color-100);
+    text-decoration: underline;
+  }
+}
+
+.blog-title {
+  font-size: 2.6em;
+  margin: 0.2em 0;
+}
+
+.blog-subhead {
+  color: var(--text-bright-text);
+  margin-bottom: 3em;
+}
+
+.blog-message {
+  padding: 3em 0;
+  color: var(--text-bright-text);
+
+  .button {
+    margin-top: 1em;
+    text-decoration: none;
+    color: var(--text-sigma);
+  }
+}
+
+// Post index grid
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+  margin-bottom: 3em;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--text-sigma);
+  background-color: var(--card-color);
+  border: 1px solid var(--button-tertiary-border);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--accent-color-20);
+    border-color: var(--accent-color-60);
+  }
+
+  .post-card-cover {
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .post-card-body {
+    padding: 1.2em 1.5em 1.5em 1.5em;
+  }
+
+  .post-card-title {
+    margin: 0 0 0.3em 0;
+    font-size: 1.4em;
+  }
+
+  .post-card-sub {
+    color: var(--text-bright-text);
+    margin: 0 0 0.8em 0;
+  }
+
+  .post-card-meta {
+    color: var(--text-brighter-text);
+    font-size: 0.85em;
+    display: flex;
+    gap: 0.4em;
+  }
+
+  .post-card-tags {
+    margin-top: 0.8em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+}
+
+.post-tag {
+  font-size: 0.8em;
+  padding: 0 0.7em 2px 0.7em;
+  border-radius: var(--border-radius-large);
+  background-color: var(--accent-color-10);
+  border: 1px solid var(--accent-color-40);
+  color: var(--text-bright-text);
+}
+
+.post-card.skeleton {
+  min-height: 16em;
+}
+
+// Loading shimmer
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--button-second);
+  border-radius: var(--border-radius-medium);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color-10),
+      transparent
+    );
+    animation: shimmer 1.4s infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-title {
+  height: 2.6em;
+  margin: 2.5rem 0 1.5rem 0;
+}
+.skeleton-line {
+  height: 1.1em;
+  margin-bottom: 0.8em;
+}
+.skeleton-line.short {
+  width: 60%;
+  margin-bottom: 3em;
+}
+
+// Article
+.post {
+  text-align: left;
+}
+
+.post-cover {
+  margin: 0;
+
+  img {
+    width: 100%;
+    max-height: 55vh;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+  }
+
+  figcaption {
+    text-align: center;
+    color: var(--text-brighter-text);
+    font-size: 0.85em;
+    padding: 0.5em 1em 0 1em;
+  }
+}
+
+.post-title {
+  font-size: 2.4em;
+  line-height: 1.25;
+  margin: 0.4em 0 0.2em 0;
+}
+
+.post-subtitle {
+  color: var(--text-bright-text);
+  font-size: 1.2em;
+  margin: 0 0 1em 0;
+}
+
+.post-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  color: var(--text-brighter-text);
+  font-size: 0.95em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid var(--button-tertiary-border);
+  margin-bottom: 2em;
+}
+
+.post-body {
+  max-width: 65ch;
+  font-size: 1.125rem;
+  line-height: 1.8;
+
+  .post-p {
+    margin: 0 0 1.4em 0;
+
+    a {
+      color: var(--accent-color-100);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  .post-h {
+    margin: 1.8em 0 0.6em 0;
+  }
+
+  .post-figure {
+    margin: 2em 0;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--border-radius-medium);
+    }
+
+    figcaption {
+      text-align: center;
+      color: var(--text-brighter-text);
+      font-size: 0.85em;
+      margin-top: 0.6em;
+    }
+  }
+
+  .post-video {
+    margin: 2em 0;
+    aspect-ratio: 16 / 9;
+
+    iframe,
+    video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: var(--border-radius-medium);
+      display: block;
+    }
+  }
+
+  .post-quote {
+    margin: 2em 0;
+    padding: 0.5em 0 0.5em 1.2em;
+    border-left: 3px solid var(--accent-color-100);
+    color: var(--text-bright-text);
+    font-style: italic;
+    font-size: 1.15em;
+
+    cite {
+      display: block;
+      margin-top: 0.6em;
+      font-style: normal;
+      font-size: 0.85em;
+      color: var(--text-brighter-text);
+    }
+  }
+
+  .post-code {
+    margin: 2em 0;
+    padding: 1.2em;
+    overflow-x: auto;
+    background-color: var(--button-second);
+    border: 1px solid var(--button-second-border);
+    border-radius: var(--border-radius-medium);
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+
+  code {
+    background-color: var(--accent-color-10);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.92em;
+  }
+
+  .post-code code {
+    background: none;
+    padding: 0;
+  }
+
+  .post-divider {
+    border: none;
+    height: 1px;
+    margin: 3em auto;
+    width: 40%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--accent-color-60),
+      transparent
+    );
+  }
+}
+
+.post-footer-nav {
+  margin: 3em 0 2em 0;
+
+  .button {
+    text-decoration: none;
+    color: var(--text-sigma);
+  }
+}
+
+.blog-link {
+  text-decoration: none;
+  color: var(--text-sigma);
+
+  h3 {
+    display: inline-block;
+  }
+
+  &:hover h3 {
+    color: var(--accent-color-100);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .blog-container {
+    padding: 0 1rem;
+  }
+  .blog-title {
+    font-size: 2em;
+  }
+  .post-title {
+    font-size: 1.6em;
+  }
+  .post-body {
+    font-size: 1.05rem;
+  }
 }

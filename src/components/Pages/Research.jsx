@@ -111,7 +111,6 @@ export default function Research({ researchDetails }) {
                   d = topic.abstract,
                 }) => {
                   setIsOpen(!isOpen);
-                  console.log(topic);
                   setmodalInfo({
                     head: t,
                     subhead: s,

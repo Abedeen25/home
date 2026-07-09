@@ -5,7 +5,7 @@ export default function SubTitle({ icon, title, subhead }) {
     <div className="page-heading">
       <div className="sperator"></div>
       {icon}
-      <h2>{title}</h2>
+      <h2 className="chroma">{title}</h2>
       {subhead !== "" && <p>{subhead}</p>}
     </div>
   );

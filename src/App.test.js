@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import { HashRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders the portfolio intro", async () => {
+  render(
+    <HelmetProvider>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </HelmetProvider>
+  );
+  expect(
+    await screen.findByRole("heading", { level: 1, name: /IFTEKHARUL ABEDEEN/i })
+  ).toBeInTheDocument();
 });

@@ -1,0 +1,70 @@
+{
+  "slug": "hello-world",
+  "title": "Hello World — Why I Started Writing",
+  "subtitle": "A short first post to test the publishing pipeline, block by block.",
+  "date": "2026-07-08",
+  "author": "Iftekharul Abedeen",
+  "readMinutes": 3,
+  "tags": ["meta", "writing"],
+  "cover": {
+    "src": "https://i.postimg.cc/44SvQq0d/9.webp",
+    "alt": "Abstract 3D render in warm tones",
+    "caption": "Cover render — Blender Cycles"
+  },
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Welcome to my little corner of the web. This first post exists mostly to prove the plumbing works: every article on this site is a plain JSON file, and each element you see — this paragraph, the images below, the quote, the code — is a *block* rendered by the site. It supports **bold text**, *italics*, `inline code`, and [links](https://github.com/abedeen25)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why write at all?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Teaching forces you to explain things clearly; research forces you to defend them. Writing in public does both at once. I plan to write about human-computer interaction, applied machine learning, the occasional 3D render breakdown, and whatever I learn while teaching."
+    },
+    {
+      "type": "image",
+      "src": "https://i.postimg.cc/Z5kr134z/7.webp",
+      "alt": "Stylized 3D scene inspired by Spirited Away",
+      "caption": "A render study — images support captions and lazy-load as you scroll.",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "type": "quote",
+      "text": "If you can't explain it simply, you don't understand it well enough.",
+      "cite": "Attributed to Albert Einstein"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Code blocks work too"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "def hello(name: str) -> str:\n    return f\"Hello, {name}! Welcome to the blog.\"\n\nprint(hello(\"world\"))"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "And embedded video"
+    },
+    {
+      "type": "video",
+      "provider": "youtube",
+      "id": "dQw4w9WgXcQ",
+      "title": "A demo embed"
+    },
+    {
+      "type": "paragraph",
+      "text": "That's the whole toolbox for now. If you're reading this, the pipeline works — see you in the next post."
+    }
+  ]
+}

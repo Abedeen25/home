@@ -12,25 +12,46 @@ import Teaching from "./Pages/Teaching";
 import Advising from "./Pages/Advising";
 import ExtraCurri from "./Pages/ExtraCurri";
 import { Writeups } from "./Pages/Writeups";
+import Reveal from "./Snippets/Reveal";
 
-export default function ContentBody({ isDarkTheme, showBlog }) {
+export default function ContentBody({ isDarkTheme }) {
   return (
     <div className="ContentBody">
       <Header isDarkTheme={isDarkTheme} />
       <Intro />
-      <About />
-      <Work work={Mydata.Works} />
-      <Research researchDetails={Mydata.ResearchDetails} />
-      <Education edu={Mydata.edu} />
-      <Projects ProjectList={Mydata.Projects} TS={Mydata.TechStack} />
-      <Accolades data={Mydata.Awards} />
-      <ExtraCurri data={Mydata.ECAs} />
-      <Teaching
-        Semesters={Mydata.TeachingSemesters}
-        Courses={Mydata.TaughtCourses}
-      />
-      <Advising studentList={Mydata.Advising} />
-      <Writeups showBlog={showBlog} />
+      <Reveal>
+        <About />
+      </Reveal>
+      <Reveal>
+        <Work work={Mydata.Works} />
+      </Reveal>
+      <Reveal>
+        <Research researchDetails={Mydata.ResearchDetails} />
+      </Reveal>
+      <Reveal>
+        <Education edu={Mydata.edu} />
+      </Reveal>
+      <Reveal>
+        <Projects ProjectList={Mydata.Projects} TS={Mydata.TechStack} />
+      </Reveal>
+      <Reveal>
+        <Accolades data={Mydata.Awards} />
+      </Reveal>
+      <Reveal>
+        <ExtraCurri data={Mydata.ECAs} />
+      </Reveal>
+      <Reveal>
+        <Teaching
+          Semesters={Mydata.TeachingSemesters}
+          Courses={Mydata.TaughtCourses}
+        />
+      </Reveal>
+      <Reveal>
+        <Advising studentList={Mydata.Advising} />
+      </Reveal>
+      <Reveal>
+        <Writeups />
+      </Reveal>
     </div>
   );
 }

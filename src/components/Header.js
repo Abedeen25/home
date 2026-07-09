@@ -1,30 +1,30 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { masterLogoDark, masterLogoLight } from "../ThemeControlers";
 import { PiGraduationCapFill } from "react-icons/pi";
 import { FaLinkedin, FaOrcid } from "react-icons/fa";
 import { VscGithub } from "react-icons/vsc";
 
 export default function Header({ isDarkTheme }) {
-  function refresh() {
-    window.location.reload(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  function goHome() {
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
   }
+
   return (
     <div className="Header">
-      {isDarkTheme ? (
-        <img
-          className="logo"
-          onClick={() => refresh()}
-          src={masterLogoDark}
-          alt="logo"
-        />
-      ) : (
-        <img
-          className="logo"
-          onClick={() => refresh()}
-          src={masterLogoLight}
-          alt="logo"
-        />
-      )}
+      <img
+        className="logo"
+        onClick={goHome}
+        src={isDarkTheme ? masterLogoLight : masterLogoDark}
+        alt="Go to home page"
+      />
 
       <div className="seperators" />
       <PiGraduationCapFill

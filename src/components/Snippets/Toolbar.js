@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { darklogo, lightlogo } from "../../ThemeControlers";
 import { MdAttachEmail } from "react-icons/md";
 import { TbNavigationTop } from "react-icons/tb";
@@ -10,50 +11,42 @@ import { PiStudentBold } from "react-icons/pi";
 import { ImBubbles3 } from "react-icons/im";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { SiBetterstack } from "react-icons/si";
-// import { SiHelpscout } from "react-icons/si";
 import { VscActivateBreakpoints } from "react-icons/vsc";
-import { Link } from "react-router-dom";
 
-export function Toolbar({ darkTheme, changeTheme }) {
+export function Toolbar({ darkTheme, changeTheme, onHome = true }) {
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
 
-  const toggleVisible = () => {
-    const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
-      setVisible(true);
-    } else if (scrolled <= 300) {
-      setVisible(false);
+  useEffect(() => {
+    const toggleVisible = () =>
+      setVisible(document.documentElement.scrollTop > 300);
+    window.addEventListener("scroll", toggleVisible, { passive: true });
+    return () => window.removeEventListener("scroll", toggleVisible);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const goTo = (id) => {
+    if (onHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 350);
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-      /* you can also use 'auto' behaviour 
-         in place of 'smooth' */
-    });
-  };
-
-  window.addEventListener("scroll", toggleVisible);
-
   return (
     <div className="Tools">
-      {darkTheme ? (
-        <div
-          className="Actions theme-button"
-          onClick={() => changeTheme("light")}
-        >
-          <img src={darklogo} alt="logo" />
-        </div>
-      ) : (
-        <div
-          className="Actions theme-button"
-          onClick={() => changeTheme("dark")}
-        >
-          <img src={lightlogo} alt="logo" />
-        </div>
-      )}
+      <div className="Actions theme-button" onClick={() => changeTheme()}>
+        <img
+          src={darkTheme ? lightlogo : darklogo}
+          alt={darkTheme ? "Switch to light theme" : "Switch to dark theme"}
+        />
+      </div>
       <div className="Actions">
         <Tooltip className="tool-tip" id="my-tooltip" />
         <MdAttachEmail
@@ -64,62 +57,54 @@ export function Toolbar({ darkTheme, changeTheme }) {
             navigator.clipboard.writeText("iftekharul@iut-dhaka.edu")
           }
         />
-        <a href="#workExp">
-          <PiBriefcaseFill
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Work Experience"
-            className="Nav-icons award-a"
-          />
-        </a>
-        <a href="#research">
-          <LuBrainCircuit
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Research Works"
-            className="Nav-icons award-a"
-          />
-        </a>
-        <a href="#education">
-          <PiStudentBold
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Education"
-            className="Nav-icons award-a"
-          />
-        </a>
-        <a href="#project">
-          <SiBetterstack
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Projects"
-            className="Nav-icons award-a"
-          />
-        </a>
-        <a href="#Awards">
-          <FaAward
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Awards"
-            className="Nav-icons award-a"
-          />
-        </a>
-        <a href="#extraC">
-          <VscActivateBreakpoints
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Extra Curricular Activities"
-            className="Nav-icons award-a"
-          />
-        </a>
-        <a href="#teach">
-          <FaChalkboardTeacher
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Teaching Experience"
-            className="Nav-icons award-a"
-          />
-        </a>
-        <a href="#Advising">
-          <ImBubbles3
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="Navigate to Advising"
-            className="Nav-icons award-a"
-          />
-        </a>
+        <PiBriefcaseFill
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Work Experience"
+          className="Nav-icons award-a"
+          onClick={() => goTo("workExp")}
+        />
+        <LuBrainCircuit
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Research Works"
+          className="Nav-icons award-a"
+          onClick={() => goTo("research")}
+        />
+        <PiStudentBold
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Education"
+          className="Nav-icons award-a"
+          onClick={() => goTo("education")}
+        />
+        <SiBetterstack
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Projects"
+          className="Nav-icons award-a"
+          onClick={() => goTo("project")}
+        />
+        <FaAward
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Awards"
+          className="Nav-icons award-a"
+          onClick={() => goTo("Awards")}
+        />
+        <VscActivateBreakpoints
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Extra Curricular Activities"
+          className="Nav-icons award-a"
+          onClick={() => goTo("extraC")}
+        />
+        <FaChalkboardTeacher
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Teaching Experience"
+          className="Nav-icons award-a"
+          onClick={() => goTo("teach")}
+        />
+        <ImBubbles3
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Navigate to Advising"
+          className="Nav-icons award-a"
+          onClick={() => goTo("Advising")}
+        />
         <TbNavigationTop
           className="Nav-icons"
           data-tooltip-id="my-tooltip"
@@ -127,7 +112,6 @@ export function Toolbar({ darkTheme, changeTheme }) {
           onClick={scrollToTop}
           style={{ display: visible ? "inline" : "none" }}
         />
-        {/* Go to top of the page */}
       </div>
     </div>
   );

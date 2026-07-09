@@ -1,11 +1,12 @@
 import { React, useState } from "react";
+import { Link } from "react-router-dom";
 import { PiPersonSimpleThrowBold } from "react-icons/pi";
 import SubTitle from "../Snippets/SubTitle";
 import { Gallery } from "react-grid-gallery";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
-export const Writeups = ({ showBlog }) => {
+export const Writeups = () => {
   const images = [
     {
       src: "https://i.postimg.cc/jdnHgvVh/6.webp",
@@ -47,7 +48,6 @@ export const Writeups = ({ showBlog }) => {
         { value: "Houdini", title: "Houdini" },
       ],
       caption: "Abstract",
-      // alt: "Boats (Jeshu John - designerspics.com)",
     },
     {
       src: "https://i.postimg.cc/rpM5pkDh/Crab-tif.webp",
@@ -168,34 +168,6 @@ export const Writeups = ({ showBlog }) => {
   ];
 
   const [index, setIndex] = useState(-1);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const delay = async (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
-
-  const handleClick = async (index, item) => {
-    setIndex(index);
-    setIsOpen(true);
-    await delay(100);
-    handleMoveNext();
-    await delay(100);
-    handleMovePrev();
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-    setIndex(-1);
-  };
-
-  const handleMovePrev = () => {
-    setIndex((prevIndex) => (prevIndex + images.length - 1) % images.length);
-    console.log(images[index]);
-  };
-
-  const handleMoveNext = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
 
   return (
     <div className="topic-sections">
@@ -205,28 +177,30 @@ export const Writeups = ({ showBlog }) => {
         subhead={"A glimpse into my leisurely works"}
       />
       <div className="topicList">
-        <div className="topic">{/* <h3>Writings</h3> */}</div>
         <div className="topic">
-          <h3 onClick={() => showBlog("hehehe")}>3D Renders & Compositions</h3>
+          <Link to="/blog" className="blog-link">
+            <h3 className="chroma-hover">Writings &amp; Blog →</h3>
+          </Link>
+        </div>
+        <div className="topic">
+          <h3>3D Renders &amp; Compositions</h3>
         </div>
       </div>
       <div className="gal-render">
         <Gallery
           images={images}
-          onClick={handleClick}
+          onClick={(i) => setIndex(i)}
           enableImageSelection={false}
         />
-        {isOpen && index >= 0 && (
-          <Lightbox
-            mainSrc={images[index].ori}
-            imageTitle={images[index].caption}
-            nextSrc={images[(index + 1) % images.length].src}
-            prevSrc={images[(index + images.length - 1) % images.length].src}
-            onCloseRequest={handleClose}
-            onMovePrevRequest={handleMovePrev}
-            onMoveNextRequest={handleMoveNext}
-          />
-        )}
+        <Lightbox
+          open={index >= 0}
+          index={index >= 0 ? index : 0}
+          close={() => setIndex(-1)}
+          slides={images.map((im) => ({
+            src: im.ori || im.src,
+            title: im.caption,
+          }))}
+        />
       </div>
     </div>
   );

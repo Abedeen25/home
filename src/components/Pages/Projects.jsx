@@ -2,7 +2,6 @@ import React from "react";
 import SubTitle from "../Snippets/SubTitle";
 import { SiBetterstack } from "react-icons/si";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-import HorizontalScroll from "../Snippets/HorizontalScroll";
 
 export default function Projects({ ProjectList, TS }) {
   const [projectID, setProjectID] = React.useState(0);

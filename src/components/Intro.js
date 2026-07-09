@@ -5,11 +5,11 @@ import ButtonC from "./Snippets/ButtonC";
 export default function Intro() {
   return (
     <div className="intro-page">
-      <dive className="hero-image">
-        <img src={pic} alt="avater" />
-      </dive>
-      <dive className="intro-details Font-300">
-        <h1 className="Font-500">IFTEKHARUL ABEDEEN</h1>
+      <div className="hero-image">
+        <img src={pic} alt="Portrait of Iftekharul Abedeen" fetchpriority="high" />
+      </div>
+      <div className="intro-details Font-300">
+        <h1 className="Font-500 chroma">IFTEKHARUL ABEDEEN</h1>
         <div>Lecturer</div>
         <div>Department of Computer Science</div>
         <div>United International University</div>
@@ -23,7 +23,7 @@ export default function Intro() {
           }
           hLink={true}
         />
-      </dive>
+      </div>
     </div>
   );
 }

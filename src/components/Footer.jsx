@@ -11,7 +11,12 @@ export default function Footer() {
           <div className="col links">
             <div className="Font-600">Contact</div>
             {contact.map((ring) => (
-              <a href={ring.link} target="_blank" rel="noopener noreferrer">
+              <a
+                key={ring.text}
+                href={ring.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {ring.icon} <div>{ring.text}</div>
               </a>
             ))}
