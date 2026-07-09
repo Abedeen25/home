@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "slug": "hello-world",
+      "title": "Hello World — Why I Started Writing",
+      "subtitle": "A short first post to test the publishing pipeline, block by block.",
+      "date": "2026-07-08",
+      "readMinutes": 3,
+      "tags": ["meta", "writing"],
+      "cover": "https://i.postimg.cc/44SvQq0d/9.webp",
+      "published": true
+    }
+  ]
+}

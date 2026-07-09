@@ -1,6 +1,6 @@
 {
   "short_name": "Iftekharul Abedeen",
-  "name": "My portfolio",
+  "name": "Iftekharul Abedeen — Portfolio & Blog",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1b1e2b",
+  "background_color": "#1b1e2b"
 }
