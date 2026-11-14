@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 function getCurrentTimeInDhaka() {
   let date = new Date();
   let formatter = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Edmonton",
+    timeZone: "Etc/GMT+6",
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
