@@ -5,6 +5,8 @@ import masterLogoLight from "./Assets/Images/iA Bright.svg";
 import enase from "./Assets/Images/ENASE.svg";
 import nature from "./Assets/Images/Nature.svg";
 import wiley from "./Assets/Images/wiley.svg";
+import ieee from "./Assets/Images/IEEE.svg";
+import springer from "./Assets/Images/Springer.svg";
 import fracBG from "./Assets/Images/frac.webp";
 import gaitBG from "./Assets/Images/gaitbg.webp";
 import ctBG from "./Assets/Images/ctbg.webp";
@@ -18,6 +20,8 @@ export {
   enase,
   nature,
   wiley,
+  ieee,
+  springer,
   fracBG,
   gaitBG,
   ctBG,

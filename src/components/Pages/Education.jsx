@@ -27,11 +27,36 @@ export default function Education({ edu }) {
                 </b>{" "}
                 ({inst.Time})
               </h3>
-              <div>{inst.Cert}</div>
               <div>
-                <b>{inst.GPType} : </b>
-                {inst.GP}
+                {inst.Cert}
+                {inst.Faculty && `, ${inst.Faculty}`}
               </div>
+              {inst.GP && (
+                <div>
+                  <b>{inst.GPType} : </b>
+                  {inst.GP}
+                </div>
+              )}
+              {inst.Lab && (
+                <div>
+                  <b>Lab: </b> {inst.Lab}
+                </div>
+              )}
+              {inst.Supervisor && (
+                <div>
+                  <b>Supervisor: </b>{" "}
+                  {inst.SupLink ? (
+                    <span
+                      className="clickabkelink"
+                      onClick={() => window.open(inst.SupLink)}
+                    >
+                      {inst.Supervisor} <IoLinkOutline />
+                    </span>
+                  ) : (
+                    inst.Supervisor
+                  )}
+                </div>
+              )}
               {inst.Thesis && (
                 <div className="Edu-details">
                   <b>Thesis: </b> {inst.Thesis_title}

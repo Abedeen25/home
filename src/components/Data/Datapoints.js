@@ -6,6 +6,8 @@ import {
   gaitBG,
   ctBG,
   pexp,
+  ieee,
+  springer,
 } from "../../ThemeControlers";
 //Icons
 import {
@@ -54,6 +56,17 @@ let Mydata = {
     },
   ],
   edu: [
+    {
+      Name: "University of Calgary",
+      webLink: "https://www.ucalgary.ca",
+      Cert: "M.Sc. in Computer Science",
+      Faculty: "Faculty of Science",
+      Lab: "Vision Research Lab",
+      Supervisor: "Farhad Maleki",
+      SupLink: "https://profiles.ucalgary.ca/farhad-maleki",
+      Time: "2026 - Present",
+      Thesis: false,
+    },
     {
       Name: "Islamic University of Technology (IUT)",
       webLink: "https://iutoic-dhaka.edu",
@@ -106,7 +119,7 @@ let Mydata = {
           "Tareque Mohmud Chowdhury",
           "Swakkhar Shatabda",
         ],
-        Publisher: "Scientific Data, Nature (2023)",
+        Publisher: "Scientific Data 10, 521 — Nature (2023)",
         Type: "Journal",
         Link: "https://www.nature.com/articles/s41597-023-02432-4",
         PDF: "https://www.nature.com/articles/s41597-023-02432-4.pdf",
@@ -121,7 +134,7 @@ let Mydata = {
       },
       {
         Title:
-          "Analysis of Software Developers’ Programming LanguagePreferences and Community Behavior From Big5Personality Traits",
+          "Analysis of Software Developers’ Programming Language Preferences and Community Behavior From Big5 Personality Traits",
         Authors: [
           "Md. Saddam Hossain Mukta",
           "Badrun Nessa Antu",
@@ -129,7 +142,8 @@ let Mydata = {
           "Iftekharul Abedeen",
           "Najmul Islam",
         ],
-        Publisher: "Software: Practice and Experience, Wiley (2024)",
+        Publisher:
+          "Software: Practice and Experience 55(3), 473–490 — Wiley (2025)",
         Type: "Journal",
         Link: "http://doi.org/10.1002/spe.3381",
         PDF: "https://onlinelibrary.wiley.com/doi/epdf/10.1002/spe.3381",
@@ -138,7 +152,7 @@ let Mydata = {
           "NLP",
           "Personality Analysis",
           "Software Practices",
-          "Exlainable AI",
+          "Explainable AI",
           "Behavior Analysis",
           "Social Computing",
         ],
@@ -147,19 +161,62 @@ let Mydata = {
         Title:
           "Decoding Code Quality: A Software Metric Analysis of Open-Source JavaScript Projects.",
         Authors: ["Suzad Mohammad", "Abdullah Al Jobair", "Iftekharul Abedeen"],
-        Publisher: "ENASE (2024)",
+        Publisher:
+          "19th International Conference on Evaluation of Novel Approaches to Software Engineering (ENASE 2024), 63–74 — SciTePress",
         Type: "Conference",
         Link: "https://www.scitepress.org/Documents/2024/126188/",
         PDF: "http://www.scitepress.org/Papers/2024/126188/126188.pdf",
         PubLogo: enase,
         tags: ["Software Development", "Coding Analysis", "Code Quality"],
       },
+      {
+        Title:
+          "Urban Sustainability in Bangladesh: Satellite-Based Analysis of Land Use and Air Pollution Trends in Major Bangladeshi Cities",
+        Authors: [
+          "Md Saib Hossain",
+          "Md Maynul Hossen",
+          "Shahariar Sarkar",
+          "Tasmin Sanjida",
+          "Iftekharul Abedeen",
+        ],
+        Publisher:
+          "28th International Conference on Computer and Information Technology (ICCIT 2025) — IEEE",
+        Type: "Conference",
+        Link: "https://doi.org/10.1109/ICCIT68739.2025.11490302",
+        PDF: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11490302",
+        PubLogo: ieee,
+        tags: [
+          "Remote Sensing",
+          "Urban Sustainability",
+          "Land Use",
+          "Air Pollution",
+          "Data Analysis",
+        ],
+      },
+      {
+        Title:
+          "An Exploratory Study of the Code Quality of Open-Source JavaScript Projects",
+        Authors: ["Suzad Mohammad", "Abdullah Al Jobair", "Iftekharul Abedeen"],
+        Publisher:
+          "Evaluation of Novel Approaches to Software Engineering (ENASE 2024, Revised Selected Papers), CCIS, 242–272 — Springer Nature (2026)",
+        Type: "Book Chapter",
+        Link: "https://doi.org/10.1007/978-3-032-19050-5_12",
+        PDF: "https://link.springer.com/content/pdf/10.1007/978-3-032-19050-5_12.pdf",
+        PubLogo: springer,
+        tags: [
+          "Software Development",
+          "Code Quality",
+          "CI/CD",
+          "Open Source",
+          "Empirical Study",
+        ],
+      },
     ],
     Ongoing: [
       {
         title:
-          "Enhancing Typing Speed and Ergonomics Through Optimal Keyboard Design: A Reinforcement Learning Approach",
-        Status: "Under Review",
+          "LayoutRL: A Reinforcement Learning-Based Approach to Keyboard Layout Optimization",
+        Status: "Under Review (preprint on OpenReview)",
         Spervisor: "Prof. Dr. Swakkhar Shatabda",
         SupLink:
           "https://cse.sds.bracu.ac.bd/faculty_profile/333/swakkhar_shatabda",
@@ -228,59 +285,78 @@ let Mydata = {
     5: "Spring 2024",
     6: "Summer 2024",
     7: "Fall 2024",
+    8: "Fall 2026",
   },
-  TaughtCourses: [
+  TeachingGroups: [
     {
-      courseTitle: "CSE 4945: UI: Design and Concepts",
-      semesters: [7, 6, 5],
+      institution: "University of Calgary",
+      role: "Teaching Assistant",
+      courses: [
+        {
+          courseTitle:
+            "CPSC 331: Data Structures, Algorithms, and Their Analysis",
+          semesters: [8],
+        },
+      ],
     },
     {
-      courseTitle: "EEE 4261: Green Computing",
-      semesters: [5],
-    },
-    {
-      courseTitle: "CSE 2233: Theory of Computation",
-      semesters: [6, 5, 4, 3, 2],
-    },
-    {
-      courseTitle: "CSE 2217: Data Structure and Algorithms II",
-      semesters: [6],
-    },
-    {
-      courseTitle: "CSE 2218: Data Structure and Algorithms II Laboratory",
-      semesters: [6, 5],
-    },
-    {
-      courseTitle: "CSE 2216: Data Structure and Algorithms I Laboratory",
-      semesters: [7, 5, 4, 3],
-    },
-    {
-      courseTitle: "CSE 2213: Discrete Mathematics",
-      semesters: [4, 1],
-    },
-    {
-      courseTitle: "CSE 2118: Advanced Object Oriented Programming Laboratory",
-      semesters: [1],
-    },
-    {
-      courseTitle: "CSE 1325: Digital Logic Design",
-      semesters: [3],
-    },
-    {
-      courseTitle: "CSE 1326: Digital Logic Design Laboratory",
-      semesters: [3, 2],
-    },
-    {
-      courseTitle: "CSE 1115: Object Oriented Programming",
-      semesters: [7, 6, 2, 1],
-    },
-    {
-      courseTitle: "CSE 1112: Structured Programming Language Laboratory",
-      semesters: [5, 4, 3, 2],
-    },
-    {
-      courseTitle: "CSE 1110: Introduction to Computer Systems",
-      semesters: [1],
+      institution: "United International University (UIU)",
+      role: "Lecturer",
+      courses: [
+        {
+          courseTitle: "CSE 4945: UI: Design and Concepts",
+          semesters: [7, 6, 5],
+        },
+        {
+          courseTitle: "EEE 4261: Green Computing",
+          semesters: [5],
+        },
+        {
+          courseTitle: "CSE 2233: Theory of Computation",
+          semesters: [6, 5, 4, 3, 2],
+        },
+        {
+          courseTitle: "CSE 2217: Data Structure and Algorithms II",
+          semesters: [6],
+        },
+        {
+          courseTitle: "CSE 2218: Data Structure and Algorithms II Laboratory",
+          semesters: [6, 5],
+        },
+        {
+          courseTitle: "CSE 2216: Data Structure and Algorithms I Laboratory",
+          semesters: [7, 5, 4, 3],
+        },
+        {
+          courseTitle: "CSE 2213: Discrete Mathematics",
+          semesters: [4, 1],
+        },
+        {
+          courseTitle:
+            "CSE 2118: Advanced Object Oriented Programming Laboratory",
+          semesters: [1],
+        },
+        {
+          courseTitle: "CSE 1325: Digital Logic Design",
+          semesters: [3],
+        },
+        {
+          courseTitle: "CSE 1326: Digital Logic Design Laboratory",
+          semesters: [3, 2],
+        },
+        {
+          courseTitle: "CSE 1115: Object Oriented Programming",
+          semesters: [7, 6, 2, 1],
+        },
+        {
+          courseTitle: "CSE 1112: Structured Programming Language Laboratory",
+          semesters: [5, 4, 3, 2],
+        },
+        {
+          courseTitle: "CSE 1110: Introduction to Computer Systems",
+          semesters: [1],
+        },
+      ],
     },
   ],
   Advising: {

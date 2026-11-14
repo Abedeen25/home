@@ -43,7 +43,7 @@ export default function ContentBody({ isDarkTheme }) {
       <Reveal>
         <Teaching
           Semesters={Mydata.TeachingSemesters}
-          Courses={Mydata.TaughtCourses}
+          Groups={Mydata.TeachingGroups}
         />
       </Reveal>
       <Reveal>
